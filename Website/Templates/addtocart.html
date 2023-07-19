@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'CSS/cart.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="photo-container">
+        <img src="{% static 'Images/Landscape.jpg'%}" alt="Image" class="image">
+        <div class="centered-text">
+            <h1 class="pick">My perfect choice brings immense happiness, filling my world with vibrant joy.</h1>
+        </div>
+    </div>
+    <div class="Cart_text"> Your Cart Items</div>
+
+    <div class="cart_container">
+        {% for item in cart_items %}
+        <div class="card">
+            <img src="{{ item.product.image.url }}" alt="Product Image" class="card_image">
+            <div class="detils">
+                <table>
+                    <tr>
+                        <th>Product Details</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Item</td>
+                        <td>{{ item.product.title }} </td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{ item.rate }}</td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td> {{ item.quantity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sub Total</td>
+                        <td>{{ item.sub_total }}</td>
+                    </tr>
+                    <tr>
+                        <td>Quantity</td>
+                        <td>
+                            <div class="container">
+                                <div class="counter-wrapper">
+                                    <button class="counter-button" id="decrement-count">
+                                        <a href="{% url 'Backend:decreasefromcart' item.product.id %}">
+                                            <i class='bx bxs-chevrons-left'></i>
+                                        </a>
+                                    </button>
+                                    <div class="counter-value" id="total-count">{{ item.quantity }}</div>
+                                    <button class="counter-button" id="increment-count">
+                                        <a href="{% url 'Backend:addtocart' item.product.id %}">
+                                            <i class='bx bxs-chevrons-right'></i>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="container">
+            <a href="{% url 'Backend:checkout' %}" class="checkOut">Check Out</a>
+        </div>
+    </div>
+
+    {% endblock content %}
+</body>
+</html>

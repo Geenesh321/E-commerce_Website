@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'K2D', sans-serif;
+        background: linear-gradient(#30142b, #2772a1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search-result-heading {
+        font-size: 24px;
+        margin-bottom: 16px;
+        color: white;
+        text-align: center;
+    }
+
+    .search-results-list {
+        list-style: none;
+        padding: 0;
+        margin: 50px;
+        margin-top: 550px;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-results-item {
+        width: 300px;
+        margin: 16px;
+        color: rgb(0, 0, 0);
+        background-color: transparent;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 16px;
+        border-radius: 8px;
+    }
+
+    .product-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .product-price {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .product-marked-price {
+        color: red;
+        text-decoration: none;
+    }
+
+    .add-to-cart-button {
+        background-color: #2772a1;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .add-to-cart-button:hover {
+        background-color: #16486b;
+    }
+
+    .search-no-results {
+        font-style: italic;
+        color: gray;
+        text-align: center;
+    }
+</style>
+<h2 class="search-result-heading">Search Results for "{{ query }}"</h2>
+
+{% if products %}
+<ul class="search-results-list">
+    {% for product in products %}
+    <li class="search-results-item">
+        <div class="product-container">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image">
+            <h3 class="product-title">{{ product.title }}</h3>
+            <p class="product-price">Price: Rs <strike style="color: red;"><span class="product-marked-price">{{ product.marked_priced }} </strike></span> {{ product.selling_price }}</p>
+            <a href="{% url 'Backend:addtocart' product.id %}" class="add-to-cart-button">Add to Cart</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="search-no-results">No results found.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Product Details
+
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{ product.image.url }}" alt="{{ product.image.url }}" height="500" width="500">
+    </div>
+
+    <div class="col-md-6">
+
+        <h5>Name: {{ product.title }}</h5>
+        <h5><p>Price: Rs <strike> {{ product.marked_priced }} </strike> {{ product.selling_price}}</p></h5>
+        <h5></h5>
+
+        <a href="#" class="btn btn-info"> Add to Cart</a>
+
+
+
+    </div>
+
+</div>
+
+{% endblock content %}

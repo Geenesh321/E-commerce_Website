@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+    <script src="{% static 'JS/script.js' %}" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{% static 'Images/logo-white.png'%}" alt="Logo">
+        </div>
+        <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'Backend:home' %}">Home</a></li>
+            <li><a href="{% url 'Backend:contact' %}">Contact-us</a></li>
+
+            <li class="search-item">
+                <form action="{% url 'Backend:search' %}" method="GET">
+                    <div class="search-container">
+                        <input type="text" class="search-input" name="query" placeholder="Search">
+                        <button class="search-button" type="submit">
+                            <i class="bx bx-search-alt-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </li>
+
+            <li><a href="{% url 'Backend:login' %}" class="login-button"> <i class='bx bx-user'></i> </a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+</body>
+
+</html>

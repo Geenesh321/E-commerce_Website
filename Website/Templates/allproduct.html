@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title  %} ALL Product {% endblock title %}
+
+
+
+{% block content %}
+
+{% for category in categories %}
+<div class="row" style="border: 1px solid black;">
+    <h3>{{ category.title }}</h3>
+    {% for product in category.product_set.all %}
+
+    <div class="col-md-6">
+        <h5>{{product.title }}</h5>
+        <img src="{{product.image.url }}" alt="{{ product.title }}" height="500" width="500">
+        <p>Price: Rs <strike> {{ product.marked_priced }} </strike> {{ product.selling_price}}</p>
+        <a href="#" class="btn btn-info"> Add to Cart</a>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endfor %}
+{% endblock content %}

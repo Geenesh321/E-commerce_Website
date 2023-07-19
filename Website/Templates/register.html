@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>{% block title %} Register {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/register.css' %}">
+
+</head>
+
+<body>
+    <div class="register-page">
+        <div class="form">
+            <form class="register-form" method="POST">
+                {% csrf_token %}
+                <h2>Register</h2>
+                <input type="text" placeholder="Full Name *" name="full_name" required />
+                <input type="text" placeholder="Username *" name="username" required />
+                <input type="email" placeholder="Email *" name="email" required />
+                <input type="password" placeholder="Password *" name="password" required />
+
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+
+
+                <button class="btn" type="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Create
+                </button>
+                <p class="message">Already registered? <a href="{% url 'Backend:login' %}">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %} Home Page {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+</head>
+
+<body>
+
+    <div class="containers2">
+        <img src= " {% static 'Images/Landscape.jpg'%}" alt="Image" class="image">
+        <div class="overlay">
+            <h1 class="text">Find your Perfect Style</h1>
+        </div>
+    </div>
+
+    <div class="product">
+        <h1>Our <span class="underline">Product</span></h1>
+      </div>
+
+    <div class="container">
+        {% for product in products %}
+        <div class="card">
+            <img src="{{product.image.url }}" alt="{{ product.title }}" class="card-image">
+            <h3 class="card-title"><a href="{% url 'Backend:productdetail' product.slug %}">{{product.title }}</a></h3>
+            <p class="card-price">Price: Rs <strike style="color: red;">{{ product.marked_priced }}</strike> {{ product.selling_price }}</p>
+            <a href="{% url 'Backend:addtocart' product.id %}" class="btn">Add to Cart</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
+{% endblock content %}

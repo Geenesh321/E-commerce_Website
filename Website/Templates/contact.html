@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'CSS/contact.css' %}">
+</head>
+
+<body>
+    <div class="container_form">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Customer Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your name.." required>
+
+            <label for="address">Shipping Address:</label>
+            <textarea id="address" name="address" placeholder="Your shipping address.." required></textarea>
+
+            <label for="phone">Phone No.:</label>
+            <input type="text" id="phone" name="phone" placeholder="Your phone number.." required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    {% endblock content %}
+</body>
+
+</html>

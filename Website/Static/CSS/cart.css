@@ -1,0 +1,205 @@
+        @import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            color: #eda0a0;
+            font-family: 'K2D', sans-serif;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .photo-container {
+            position: relative;
+            height: 100%;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 120vh;
+            display: block;
+            margin: 0 auto;
+            object-fit: cover;
+        }
+
+        .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .pick {
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px) {
+            .centered-text {
+                padding: 10px;
+            }
+
+            .pick {
+                font-size: 25px;
+            }
+        }
+
+        .cart_container {
+            height: 80vh;
+            width: 80%;
+            border: 1px solid rgba(0, 0, 0, 0);
+            margin: 0px auto;
+            text-align: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .Cart_text {
+            color: black;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-right: 70%;
+        }
+
+        @media (max-width: 768px) {
+            .cart_container {
+                padding: 0 10px;
+            }
+        }
+
+        .Cart_text {
+            position: relative;
+            left: 156px;
+            top: 0px;
+
+        }
+
+        .card {
+            padding: 20px;
+            width: 60%;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card_image {
+            width: 400px;
+            height: 300px;
+            margin-right: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .card_row div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart_bold {
+            position: relative;
+            left: 15%;
+            font-weight: bold;
+        }
+
+        .detils {
+            position: relative;
+            right: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 340px;
+            position: absolute;
+            left: -10px;
+            top: -20px;
+        }
+
+        th,
+        td {
+            padding: 25px 20px 0px 6px;
+            width: 900px;
+            color: black;
+        }
+
+        .counter-wrapper {
+            display: flex;
+            align-items: center;
+            color: back;
+        }
+
+        .counter-button {
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .counter-button:hover {
+            background-color: #f9f9f9;
+        }
+
+        .counter-button img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .counter-value {
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bxs-chevrons-right {
+            font-size: 1rem;
+        }
+
+        .checkOut {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 6px 35px;
+            text-decoration: none;
+            border-radius: 4px;
+            width: 10%;
+            margin-top: 10px;
+            transition: transform 0.3s;
+            position: relative;
+            left: 40%;
+            overflow: hidden;
+        }
+
+        .checkOut::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+            z-index: -1;
+        }
+
+        .checkOut:hover {
+            transform: scale(1.1);
+        }
+
+        .checkOut:hover::after {
+            transform: scaleX(1);
+        }
